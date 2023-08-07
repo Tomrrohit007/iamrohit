@@ -1,0 +1,53 @@
+.content {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+.imgContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: max-content;
+}
+
+.title {
+  font-size: 44px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.input,
+.textArea {
+  padding: 8px 14px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--color);
+  border: 3px solid var(--color);
+  font-size: 14px;
+  font-weight: bold;
+}
+.input {
+  height: 50px;
+}
+
+
+.image{
+    animation: up-and-down 5000ms ease-in-out infinite alternate;
+}
+
+@keyframes up-and-down {
+    from{
+        transform: translateY(-15px) scale(1.03);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}

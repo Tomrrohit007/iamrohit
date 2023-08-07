@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import Darkmode from "../Darkmode/Darkmode";
 import { motion as m } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   {
@@ -29,10 +29,14 @@ const links = [
   },
 ];
 
-const currentRoute = window.location.pathname;
-
 const Navbar = () => {
-  const [activeTab, setActiveTab] = useState(currentRoute);
+  const [mount, setMount] = useState(false);
+  const [activeTab, setActiveTab] = useState("/");
+
+  useEffect(() => {
+    setMount(true);
+    setActiveTab(window.location.pathname);
+  }, []);
 
   return (
     <nav className={styles.container}>
@@ -44,7 +48,7 @@ const Navbar = () => {
         Iamrohit
       </Link>
       <ul className={styles.links}>
-        <Darkmode />
+        {mount ? <Darkmode /> : null}
         {links.map((link) => (
           <Link
             key={link.id}
@@ -52,8 +56,10 @@ const Navbar = () => {
             className={styles.link}
             onClick={() => setActiveTab(link.url)}
           >
-            {activeTab === link.url ? (
-              <m.div layoutId="pill" className={styles.pill} />
+            {mount ? (
+              activeTab === link.url ? (
+                <m.div layoutId="pill" className={styles.pill} />
+              ) : null
             ) : null}
             {link.title}
           </Link>

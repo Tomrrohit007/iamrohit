@@ -3,11 +3,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { motion as m } from "framer-motion";
 
-const getTheme = localStorage.getItem("theme");
-const currentTheme = getTheme === "true";
-
 const Darkmode = () => {
-  const [mode, setMode] = useState(currentTheme || false);
+  const [mode, setMode] = useState(false);
 
   const handleToggle = (e: ChangeEvent<HTMLInputElement>) => {
     setMode(e.target.checked);
@@ -15,6 +12,10 @@ const Darkmode = () => {
   };
 
   useEffect(() => {
+    const getTheme = localStorage?.getItem("theme") ?? "true";
+    const currentTheme = getTheme === "true";
+    setMode(currentTheme);
+    
     document.documentElement.className = mode ? "dark" : "";
   }, [mode]);
 

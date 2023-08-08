@@ -26,7 +26,7 @@
   width: 100%;
   height: 500px;
   object-fit: contain;
-  /* animation: up-and-down 5000ms ease-in-out infinite; */
+  animation: up-and-down 5000ms ease-in-out infinite;
 }
 
 @keyframes up-and-down {
